@@ -11,7 +11,7 @@ const { createToken } = require("../helpers/tokens");
 const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const { BadRequestError } = require("../expressError");
-debugger;
+
 /** POST /auth/token:  { username, password } => { token }
  *
  * Returns JWT token which can be used to authenticate further requests.
@@ -21,7 +21,6 @@ debugger;
 
 router.post("/token", async function (req, res, next) {
   try {
-    debugger;
     const validator = jsonschema.validate(req.body, userAuthSchema);
     if (!validator.valid) {
       const errs = validator.errors.map(e => e.stack);
@@ -49,7 +48,6 @@ router.post("/token", async function (req, res, next) {
 
 router.post("/register", async function (req, res, next) {
   try {
-    debugger;
     const validator = jsonschema.validate(req.body, userRegisterSchema);
     if (!validator.valid) {
       const errs = validator.errors.map(e => e.stack);
